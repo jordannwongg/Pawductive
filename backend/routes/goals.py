@@ -25,3 +25,15 @@ def create_goal(goal: schemas.GoalCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_goal)
     return db_goal
+
+@router.patch("/goals/{goal_id}", response_model=schemas.GoalRead)
+def update_goal_complete(goal_id: int, db: Session = Depends(get_db)):
+    goal = db.query(models.Goal).filter(models.Goal.id == goal_id).first()
+    if not goal:
+        raise HTTPException(status_code=404, detail="Goal not found")
+
+    goal.complete = not goal.complete
+    db.commit()
+    db.refresh(goal)
+    return goal
+
