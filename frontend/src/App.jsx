@@ -33,11 +33,20 @@ function App() {
     }
   };
 
+  const deleteGoal = async (goalId) => {
+    try {
+      await client.delete(`/goals/${goalId}`);
+      setGoals((prev) => prev.filter((goal) => goal.id !== goalId));
+    } catch (err) {
+      console.error("Error deleting goal:", err);
+    }
+  };
+
   return (
     <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
       <h1>Pawductive 🐱</h1>
       <AddGoalForm onGoalAdded={handleGoalAdded} />
-      <GoalList goals={goals} onToggle={toggleGoalComplete} />
+      <GoalList goals={goals} onToggle={toggleGoalComplete} onDelete={deleteGoal} />
     </div>
   );
 }

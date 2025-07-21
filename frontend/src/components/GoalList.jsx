@@ -1,6 +1,8 @@
 // frontend/src/components/GoalList.jsx
 
-function GoalList({ goals, onToggle }) {
+function GoalList({ goals, onToggle, onDelete }) {
+  console.log("Rendering goals:", goals);  // ✅ Add this
+
   return (
     <div>
       <h2>My Goals 🐾</h2>
@@ -11,10 +13,19 @@ function GoalList({ goals, onToggle }) {
           goals.map((goal) => (
             <li
               key={goal.id}
-              onClick={() => onToggle(goal.id)}
-              style={{ cursor: 'pointer' }}
+              style={{
+                cursor: 'pointer',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}
             >
-              {goal.title} {goal.complete ? '✅' : '❌'}
+              <span onClick={() => onToggle(goal.id)}>
+                {goal.title} {goal.complete ? '✅' : '❌'}
+              </span>
+              <button onClick={() => onDelete(goal.id)} style={{ marginLeft: '1rem' }}>
+                🗑️
+              </button>
             </li>
           ))
         )}
