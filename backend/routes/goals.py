@@ -35,7 +35,7 @@ def update_goal_complete(goal_id: int, db: Session = Depends(get_db)):
     goal.complete = not goal.complete
     db.commit()
     db.refresh(goal)
-    return goal
+    return goal 
 
 @router.delete("/goals/{goal_id}", status_code=204)
 def delete_goal(goal_id: int, db: Session = Depends(get_db)):
