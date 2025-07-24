@@ -1,0 +1,54 @@
+GIT & GITHUB COMMANDS
+----------------------
+Initialize Git repo:          git init
+Add files to staging:         git add .   or   git add <filename>
+Commit changes:               git commit -m "Your message"
+Connect to remote repo:       git remote add origin <repo-url>
+Push code to GitHub:          git push origin main
+Pull latest changes:          git pull origin main
+Check status:                 git status
+View commit history:          git log --oneline
+Remove file from tracking:    git rm --cached <file>
+
+BACKEND (FASTAPI) – PYTHON
+---------------------------
+Create venv:                  python -m venv venv
+Activate venv (CMD):          venv\Scripts\activate
+Install deps:                 pip install -r requirements.txt
+Run FastAPI:                  uvicorn main:app --reload
+Freeze requirements:          pip freeze > requirements.txt
+
+POSTMAN (TESTING)
+------------------
+Test POST:                    Use POST method with JSON in body
+Test GET:                     GET http://localhost:8000/goals
+Test DELETE/PUT:              Use respective methods and route
+
+FRONTEND (REACT + VITE)
+------------------------
+Create Vite app:              npm create vite@latest
+Move into folder:             cd frontend
+Install deps:                 npm install
+Run dev server:               npm run dev
+Build for prod:               npm run build
+
+MISC COMMANDS
+--------------
+Create new file:              echo. > filename.py
+Create folder:                mkdir foldername
+Edit .gitignore:              echo venv/ > .gitignore
+Check Python version:         python --version
+Check Node.js version:        node -v
+Check npm version:            npm -v
+
+.gitignore TEMPLATE
+--------------------
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+.env
